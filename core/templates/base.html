@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Foode | {% block title %}Ресторан із душею{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>🍽️ La Foode</h1>
+            <p>мінімалізм · смак · стиль</p>
+        </div>
+        <nav>
+            <a href="{% url 'home' %}">Головна</a>
+            <a href="{% url 'news' %}">Новини</a>
+            <a href="{% url 'management' %}">Керівництво</a>
+            <a href="{% url 'about' %}">Про нас</a>
+            <a href="{% url 'contacts' %}">Контакти</a>
+            <a href="{% url 'products' %}">Продукти</a>
+            <a href="{% url 'branches_list' %}">Філії</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>{% block page_title %}{{ title }}{% endblock %}</h2>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 La Foode — свіжа кухня, тепла атмосфера</p>
+        <p>синьо-оранжева гармонія ✦</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Філії La Foode{% endblock %}
+
+{% block content %}
+<div class="card-grid">
+    {% for branch in branches %}
+    <div class="card">
+        <h3>🏠 {{ branch.name }}</h3>
+        <p>{{ branch.address }}</p>
+        <p>{{ branch.phone }}</p>
+        <a href="{% url 'branches_detail' forloop.counter %}" class="btn">Детальніше</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

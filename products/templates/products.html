@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% block title %}Продукти Versailles Cortège{% endblock %}
+
+{% block content %}
+<style>
+    .branches-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin: 2rem 0;
+    }
+
+    .add-product-form {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+    .submit-btn {
+        background-color: #2c3e50;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+        .submit-btn:hover {
+            background-color: #e74c3c;
+        }
+
+    .errorlist {
+        color: #e74c3c;
+        list-style: none;
+        padding: 0;
+        margin: 0.25rem 0 0 0;
+        font-size: 0.875rem;
+    }
+
+    .form-title {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+</style>
+
+<main class="main-branches">
+    <section class="branches-list">
+        <div class="container">
+            <div class="add-product-form">
+                <h2 class="form-title">Додати новий продукт</h2>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                        {{ form.name }}
+                        {% if form.name.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.name.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.image.id_for_label }}">{{ form.image.label }}</label>
+                        {{ form.image }}
+                        {% if form.image.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.image.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.price.id_for_label }}">{{ form.price.label }}</label>
+                        {{ form.price }}
+                        {% if form.price.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.price.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.calories.id_for_label }}">{{ form.calories.label }}</label>
+                        {{ form.calories }}
+                        {% if form.calories.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.calories.errors %}
+                            <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit" class="submit-btn">Додати продукт</button>
+                </form>
+            </div>
+
+            <div class="branches-grid">
+                {% for product in products %}
+                {% include 'components/product_card.html' with product=product %}
+                {% empty %}
+                <p>Немає продуктів. Додайте перший!</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

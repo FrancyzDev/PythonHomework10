@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ news.title }}{% endblock %}
+
+{% block content %}
+<div style="max-width: 800px; margin: 0 auto; padding: 2rem;">
+    <a href="{% url 'news' %}" style="display: inline-block; margin-bottom: 1rem; color: #e74c3c; text-decoration: none;">← Назад до новин</a>
+
+    <div class="news-detail" style="background: white; border-radius: 12px; padding: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <h1 style="margin: 0 0 0.5rem 0;">{{ news.title }}</h1>
+
+        <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem; color: #888; font-size: 0.9rem;">
+            <span>📅 {{ news.date }}</span>
+            <span>👁️ {{ news.views }} переглядів</span>
+            <span>🏷️ {{ news.badge }}</span>
+        </div>
+
+        <div style="line-height: 1.6; color: #333;">
+            <p>{{ news.full_text }}</p>
+        </div>
+
+        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee;">
+            <a href="{% url 'news' %}" style="display: inline-block; background: #e74c3c; color: white; padding: 0.5rem 1rem; text-decoration: none; border-radius: 4px;">Всі новини</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

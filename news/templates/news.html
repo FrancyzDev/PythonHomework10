@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Новини La Foode{% endblock %}
+
+{% block content %}
+<div style="max-width: 900px; margin: 0 auto; padding: 2rem;">
+    <h1 style="text-align: center; margin-bottom: 2rem;">📰 Новини La Foode</h1>
+
+    {% for id, item in news_items.items %}
+    <div class="card" style="border: 1px solid #ddd; padding: 1.5rem; margin: 1rem 0; border-radius: 8px; transition: transform 0.2s;">
+        <h3 style="margin: 0 0 0.5rem 0;">{{ item.title }}</h3>
+        <p style="color: #555;">{{ item.description }}</p>
+        <p><strong>Тип:</strong> <span style="color: #e74c3c;">{{ item.badge }}</span></p>
+        <a href="{% url 'news_detail' id %}" style="display: inline-block; margin-top: 0.5rem; color: #e74c3c; text-decoration: none;">Читати далі →</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
