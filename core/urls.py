@@ -1,5 +1,7 @@
-from django.urls import path, include, re_path
+from django.urls import path, include
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -11,5 +13,3 @@ urlpatterns = [
     path('products/', include('products.urls')),
     path('api/', include('api.urls')),
 ]
-
-handler404 = 'core.views.custom_404'
