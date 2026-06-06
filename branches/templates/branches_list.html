@@ -9,7 +9,7 @@
         <h3>🏠 {{ branch.name }}</h3>
         <p>{{ branch.address }}</p>
         <p>{{ branch.phone }}</p>
-        <a href="{% url 'branches_detail' forloop.counter %}" class="btn">Детальніше</a>
+        <a href="{% url 'branches_detail' branch.id %}" class="btn">Детальніше</a>
     </div>
     {% endfor %}
 </div>

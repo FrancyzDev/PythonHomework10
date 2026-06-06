@@ -8,7 +8,8 @@ urlpatterns = [
     path('contacts/', views.contacts, name='contacts'),
     path('news/', include('news.urls')),
     path('branches/', include('branches.urls')),
-    path('products/', include('products.urls'))
+    path('products/', include('products.urls')),
+    path('api/', include('api.urls')),
 ]
 
 handler404 = 'core.views.custom_404'

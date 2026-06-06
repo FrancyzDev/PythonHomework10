@@ -32,6 +32,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="api\admin.py" />
+    <Compile Include="api\urls.py" />
+    <Compile Include="api\views.py" />
     <Compile Include="branches\apps.py" />
     <Compile Include="branches\urls.py" />
     <Compile Include="branches\views.py" />
@@ -46,6 +49,7 @@
     <Compile Include="news\urls.py" />
     <Compile Include="news\views.py" />
     <Compile Include="products\apps.py" />
+    <Compile Include="products\migrations\__init__.py" />
     <Compile Include="products\urls.py" />
     <Compile Include="products\views.py" />
   </ItemGroup>
@@ -67,6 +71,7 @@
     <Content Include="templates\404.html" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="api\" />
     <Folder Include="branches\" />
     <Folder Include="branches\templates\" />
     <Folder Include="core\templates\" />
@@ -77,6 +82,7 @@
     <Folder Include="products\" />
     <Folder Include="news\" />
     <Folder Include="news\templates\" />
+    <Folder Include="products\migrations\" />
     <Folder Include="products\templates\" />
     <Folder Include="products\templates\components\" />
     <Folder Include="static\" />
